@@ -1,0 +1,13 @@
+﻿apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: my-flask-cicd
+  namespace: production
+spec:
+  to:
+    kind: Service
+    name: my-flask-cicd
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge

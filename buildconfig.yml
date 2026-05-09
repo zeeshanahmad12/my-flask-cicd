@@ -1,0 +1,28 @@
+﻿apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: my-flask-cicd
+  namespace: production
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com/zeeshanahmad12/my-flask-cicd.git
+      ref: main
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: python:latest
+        namespace: openshift
+  output:
+    to:
+      kind: ImageStreamTag
+      name: my-flask-cicd:latest
+  triggers:
+  - type: GitHub
+    github:
+      secret: my-webhook-secret
+  - type: ConfigChange
+  - type: ImageChange
