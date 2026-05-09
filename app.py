@@ -2,8 +2,8 @@
 
 app = Flask(__name__)
 
-BG_COLOR = "blue"
-VERSION = "V2"
+BG_COLOR = "red"
+VERSION = "V1"
 
 @app.route('/')
 def home():
